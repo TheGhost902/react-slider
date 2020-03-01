@@ -1,0 +1,58 @@
+h1 {
+    font-size: 40px;
+}
+
+body {
+    background-color: #1E1E1E;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+
+.app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* Slider CSS */
+.slider {
+    --first-color: #FBE01D;
+    --second-color: white;
+    --parent-bg-color: #1E1E1E;
+    color: var(--first-color);
+}
+.slider__labels {
+    color: var(--second-color);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.slider__rail {
+    display: block;
+    min-height: 6px;
+    background-color: var(--first-color);
+    position: relative;
+}
+.slider__lens {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--parent-bg-color);
+    border: var(--second-color) solid 6px;
+    border-radius: 50%;
+    overflow: hidden;
+    color: var(--second-color);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    cursor: none;
+}
+.slider__lens-lines {
+    padding: 5px 10px;
+    border-top: 2px solid var(--first-color);
+    border-bottom: 2px solid var(--first-color);
+    min-width: 1.5rem;
+    text-align: center;
+}
