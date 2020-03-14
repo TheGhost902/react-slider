@@ -40,6 +40,18 @@ function Slider({ from = 0, to = 100, width = 250, getValue = alert}) {
     const sliderLensCkick = () => {
         setValue({ value: lensValue, xCoordinate })
     }
+    const sliderTouchStart = e => {
+        sliderTouchMove(e)
+        setLensVisible(true)
+
+    }
+    const sliderTouchMove = e => {
+        const clientX = e.touches[0].clientX
+        let x = clientX - sliderRef.current.offsetLeft
+        if (x < 0) x = 0
+        if (x > width) x = width
+        setXCoordinate(x)
+    }
 
     return (
         <div
@@ -48,6 +60,9 @@ function Slider({ from = 0, to = 100, width = 250, getValue = alert}) {
             onMouseEnter={sliderMouseEnter}
             onMouseLeave={sliderMouseLeave}
             onMouseMove={sliderMouseMove}
+            onTouchStart={sliderTouchStart}
+            onTouchMove={sliderTouchMove}
+            onTouchEnd={sliderLensCkick}
         >
             <div className="slider__labels">
                 <span>{from}</span>
@@ -62,7 +77,8 @@ function Slider({ from = 0, to = 100, width = 250, getValue = alert}) {
                     className="slider__lens"
                     style={{
                         display: lensVisible? 'flex' : 'none',
-                        transform: `translate(calc(${xCoordinate}px - 50%), -50%)`
+                        transform: `translate(calc(${xCoordinate}px - 50%), -50%)`,
+                        userSelect: 'none'
                     }}
                     onClick={sliderLensCkick}
                 >
